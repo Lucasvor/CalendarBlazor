@@ -1,0 +1,29 @@
+﻿@page "/"
+@inject IJSRuntime JS
+
+
+
+<h1>Hello, world!</h1>
+
+    Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+
+<div id='calendar'></div>
+@code { 
+    protected async override Task OnInitializedAsync()
+    {
+
+        // await JS.InvokeVoidAsync("CalendarCall");
+
+    }
+
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("CalendarCall");
+        }
+    }
+}
